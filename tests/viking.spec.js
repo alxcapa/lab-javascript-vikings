@@ -364,9 +364,23 @@ describe("War", () => {
       });
     });
 
-    describe("showStatus() method", () => {
+    describe("attack method", () => {
+      beforeEach(() => {
+        const name = "Harald";
+        const strength = 150;
+        const health = 300;
+        let viking = new Viking(name, health, strength);
+        const healthS = 60;
+        const strengthS = 25;
+        let saxon = new Saxon(healthS, strengthS);
+        war.addViking(viking);
+        war.addSaxon(saxon);
+      });
       it("should be a function", () => {
-        expect(typeof war.showStatus).toBe("function");
+        expect(typeof war.attack).toBe("function");
+      });
+      it('should return "A Saxon has died in combat", if the Viking attack', () => {
+        expect(war.attack("viking")).toEqual("A Saxon has died in combat");
       });
     });
   });
