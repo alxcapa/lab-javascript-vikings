@@ -108,6 +108,31 @@ class War {
         return retDamage;
     }
 
+    attack(typeOfSolder) {
+        let indexes = this.getIndexes();
+        let saxon = this.saxonArmy[indexes.saxon];
+        let viking = this.vikingArmy[indexes.viking];
+        let damage, retDamage;
+
+        if (typeOfSolder === "viking") {
+            damage = viking.strength;
+            retDamage = saxon.receiveDamage(damage);
+
+            if (retDamage === "A Saxon has died in combat") {
+                this.saxonArmy.splice(indexes.saxon, 1);
+            }
+
+        } else if (typeOfSolder === "saxon") {
+
+            damage = saxon.strength;
+            retDamage = viking.receiveDamage(damage);
+            if (retDamage === `${viking.name} has died in act of combat`) {
+                this.vikingArmy.splice(indexes.viking, 1);
+            }
+        }
+        return retDamage;
+
+    }
 
     showStatus() {}
 }
