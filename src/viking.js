@@ -130,10 +130,10 @@ class War {
     let nbViking = this.vikingArmy.length;
     let nbSaxon = this.saxonArmy.length;
     if (nbViking === 0 && nbSaxon > 0) {
-      return "Vikings have won the war of the century!";
+      return "Saxons have fought for their lives and survived another day...";
     }
     if (nbSaxon === 0 && nbViking > 0) {
-      return "Saxons have fought for their lives and survived another day...";
+      return "Vikings have won the war of the century!";
     }
     if (nbViking === 0 && nbSaxon === 0) {
       return "EveryBody is die!!!!!!";

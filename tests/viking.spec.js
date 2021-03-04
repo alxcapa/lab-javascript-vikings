@@ -363,5 +363,11 @@ describe("War", () => {
         expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
       });
     });
+
+    describe("showStatus() method", () => {
+      it("should be a function", () => {
+        expect(typeof war.showStatus).toBe("function");
+      });
+    });
   });
 });
