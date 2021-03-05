@@ -223,11 +223,13 @@ class War {
    * @memberof War
    */
   attackFrom(typeOfSolder) {
+    // get one soldier of each army
     let indexes = this.getIndexes();
     let soldiers = {
       saxon: this.saxonArmy[indexes.saxon],
       viking: this.vikingArmy[indexes.viking],
     };
+    // set target
     let target =
       typeOfSolder === "saxon"
         ? soldiers.viking
@@ -235,7 +237,9 @@ class War {
         ? soldiers.saxon
         : null;
     if (target === null) return false;
+    // attacker attack target
     let retDamage = target.receiveDamage(soldiers[typeOfSolder].attack());
+    // remove target from his army if he die
     if (typeOfSolder === "viking" && retDamage === "A Saxon has died in combat") {
       this.saxonArmy.splice(indexes.saxon, 1);
     }
@@ -245,6 +249,7 @@ class War {
     ) {
       this.vikingArmy.splice(indexes.viking, 1);
     }
+    // return message
     return retDamage;
   }
   /**
