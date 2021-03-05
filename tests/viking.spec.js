@@ -377,10 +377,10 @@ describe("War", () => {
         war.addSaxon(saxon);
       });
       it("should be a function", () => {
-        expect(typeof war.attack).toBe("function");
+        expect(typeof war.attackFrom).toBe("function");
       });
       it('should return "A Saxon has died in combat", if the Viking attack', () => {
-        expect(war.attack("viking")).toEqual("A Saxon has died in combat");
+        expect(war.attackFrom("viking")).toEqual("A Saxon has died in combat");
       });
     });
   });
