@@ -188,14 +188,7 @@ class War {
    * @memberof War
    */
   vikingAttack() {
-    let indexes = this.getIndexes();
-    let viking = this.vikingArmy[indexes.viking];
-    let saxon = this.saxonArmy[indexes.saxon];
-    let retDamage = saxon.receiveDamage(viking.attack());
-    if (retDamage === "A Saxon has died in combat") {
-      this.saxonArmy.splice(indexes.saxon, 1);
-    }
-    return retDamage;
+    return this.attackFrom("viking");
   }
   /**
    * choose a Saxon in his army and make him attack a Saxon
@@ -204,14 +197,7 @@ class War {
    * @memberof War
    */
   saxonAttack() {
-    let indexes = this.getIndexes();
-    let saxon = this.saxonArmy[indexes.saxon];
-    let viking = this.vikingArmy[indexes.viking];
-    let retDamage = viking.receiveDamage(saxon.attack());
-    if (retDamage === `${viking.name} has died in act of combat`) {
-      this.vikingArmy.splice(indexes.viking, 1);
-    }
-    return retDamage;
+    return this.attackFrom("saxon");
   }
   /**
    * the parameter of the function is the type of the attacker,
